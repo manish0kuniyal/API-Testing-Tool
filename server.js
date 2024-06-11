@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./dbConfig/connect');
+const connectDB = require('./src/dbConfig/connect');
 const app = express();
-const User = require('./schema/schema');
-const AdminUpi=require('./schema/schema')
+const User = require('./src/schema/schema');
+const AdminUpi=require('./src/schema/schema')
 app.use(express.json());
 app.use(cors()); // Enable CORS for all routes
 
