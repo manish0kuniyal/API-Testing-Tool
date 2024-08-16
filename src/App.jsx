@@ -1,11 +1,20 @@
 import React from 'react'
 import Habit from './Dashboard/Habit/habit'
+import Alerts from './Dashboard/Alerts/Alerts'
+import Users from './Dashboard/Users/Users'
+import Login from './Auth/Login/Login'
+import Home from './Dashboard/Home/Home'
+import { Routes,Route } from 'react-router-dom'
 function App() {
   return (
-    <div className='border-2 border-green-200 p-3'>
+    <div>
+      <Routes>
+        <Route path='/auth' element={<Login/>}/>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/habits' element={<Habit/>}/>
+        <Route path='/alerts' element= {<Alerts/>}/>
+      </Routes>
 
-      <h1>okk</h1>
-      <Habit/>
     </div>
   )
 }
