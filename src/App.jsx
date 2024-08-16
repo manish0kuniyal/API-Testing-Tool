@@ -9,7 +9,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/auth' element={<Login/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<Login/>}/>
         <Route path='/' element={<Home/>}/>
         <Route path='/habits' element={<Habit/>}/>
         <Route path='/alerts' element= {<Alerts/>}/>
