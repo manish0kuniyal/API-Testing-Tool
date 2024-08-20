@@ -1,21 +1,21 @@
-import RoofingIcon from '@mui/icons-material/Roofing';
-import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
-import CampaignIcon from '@mui/icons-material/Campaign';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import SelfImprovementRoundedIcon from '@mui/icons-material/SelfImprovementRounded';
+import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
 export const SidebarData=[
 
     {
         title:"Home",
-        icon:<RoofingIcon/>,
+        icon:<HomeRoundedIcon/>,
         link:'/'
     },
     {
         title:"Habits",
-        icon:<SelfImprovementIcon/>,
+        icon:<SelfImprovementRoundedIcon/>,
         link:'/habits'
     },
     {
         title:"Alerts",
-        icon:<CampaignIcon/>,
+        icon:<CampaignRoundedIcon/>,
         link:'/alerts'
     }
 ]

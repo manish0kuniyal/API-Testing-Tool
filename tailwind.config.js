@@ -8,7 +8,8 @@ module.exports = {
     extend: {    colors: {
       bkShade: '#191919',
       wtShade: '#fcfcfc',
-      accent: '#e3342f',
+      prShade: '#D4C4EC',
+      wtSmoke:'#f5f5f5'
     },},
   },
   plugins: [],
