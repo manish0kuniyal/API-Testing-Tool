@@ -13,6 +13,7 @@ export const SidebarData=[
         icon:<SelfImprovementRoundedIcon/>,
         link:'/habits'
     },
+    
     {
         title:"Alerts",
         icon:<CampaignRoundedIcon/>,

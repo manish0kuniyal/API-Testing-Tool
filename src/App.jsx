@@ -34,7 +34,7 @@ function App() {
       <div className="flex flex-1  md:pt-0">
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-        <main className="flex-1 p-4 bg-wtSmoke">
+        <main className="flex-1 p-4 mt-12 md:mt-0 border-4 border-red-700 bg-wtSmoke">
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Home />} />
