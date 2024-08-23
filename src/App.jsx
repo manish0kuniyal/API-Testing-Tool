@@ -41,7 +41,9 @@ function App() {
       <div className={`flex flex-1 md:pt-0 ${location.pathname !== '/auth' ? 'mt-0' : ''}`}>
       {!isAuthRoute && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
 
-        <main className="flex-1 p-4 border-4 border-red-700 bg-wtSmoke">
+        <main className={`flex-1 p-4   bg-wtSmoke 
+          ${location.pathname !== '/auth' ? 'mt-0' : ''}
+          `}>
           <Routes>
             <Route path="/auth" element={<Auth />} />
             <Route path="/" element={<Home />} />
