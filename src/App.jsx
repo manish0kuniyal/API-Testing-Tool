@@ -4,7 +4,7 @@ import Sidebar from './Components/Sidebar/Sidebar';
 import Habit from './Dashboard/Habit/habit';
 import Alerts from './Dashboard/Alerts/Alerts';
 import Home from './Dashboard/Home/Home';
-import Auth from './Auth/auth';
+import Auth from './Auth/Auth';
 import CloseIcon from '@mui/icons-material/Close';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 
