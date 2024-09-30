@@ -8,22 +8,22 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const result = await loginuser({ username, password });
-
     try {
-      if (result) {
-        // Store the token in local storage
+      const result = await loginuser({ username, password });
+      console.log(result); // Debugging line
+
+      if (result && result.token) {
         localStorage.setItem('authToken', result.token);
         toast.success('Login successful! 🎉', { position: 'top-right', autoClose: 3000 });
         
-        // Redirect to home page
-        navigate('/'); // Navigate to the homepage
+        // window.location.href='/'
+        navigate('/'); 
       } else {
         toast.error('Wrong Credentials ❌', { position: 'top-right', autoClose: 3000 });
       }
