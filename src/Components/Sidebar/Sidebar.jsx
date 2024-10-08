@@ -39,7 +39,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
           >
             <Link to={val.link} className=" flex items-center px-4  text-prShade hover:text-wtShade  text-lg  p-2 font-bold  w-[100%] ">
               <div className='mr-2'>{val.icon}</div>
-              <div>{val.title}</div>
+              <div onClick={toggleSidebar}>{val.title}</div>
             </Link>
           </motion.li>
         ))}

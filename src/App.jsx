@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Sidebar from './Components/Sidebar/Sidebar';
-import Habit from './Dashboard/Habit/habit';
+import Contacts from './Dashboard/Contacts/Contacts';
 import Alerts from './Dashboard/Alerts/Alerts';
 import Home from './Dashboard/Home/Home';
 import Auth from './Auth/Auth';
@@ -41,7 +41,7 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const isDashboardRoute = ["/", "/habits", "/alerts"].includes(location.pathname);
+  const isDashboardRoute = ["/", "/contacts", "/alerts"].includes(location.pathname);
 
   // While loading, return nothing (or you can display a loading spinner)
   if (loading) {
@@ -67,10 +67,10 @@ function App() {
         </header>
       )}
 
-      <div className={`flex flex-1 ${isDashboardRoute ? 'mt-0' : ''}`}>
+      <div className={`flex flex-1 ${isDashboardRoute ? '' : ''}`}>
         {isDashboardRoute && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
 
-        <main className={`flex-1 p-4 bg-wtSmoke ${isDashboardRoute ? '' : ''}`}>
+        <main className={`flex-1  pt-4 mt-10 sm:mt-10 md:mt-0 lg:mt-0  bg-wtSmoke ${isDashboardRoute ? '' : ''}`}>
           <Routes>
             {/* Auth Route */}
             <Route path="/auth" element={<Auth />} />
@@ -85,10 +85,10 @@ function App() {
               }
             />
             <Route
-              path="/habits"
+              path="/contacts"
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <Habit />
+                  <Contacts />
                 </ProtectedRoute>
               }
             />

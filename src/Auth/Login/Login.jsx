@@ -22,8 +22,8 @@ function Login() {
         localStorage.setItem('authToken', result.token);
         toast.success('Login successful! 🎉', { position: 'top-right', autoClose: 3000 });
         
-        // window.location.href='/'
-        navigate('/'); 
+        window.location.href='/'
+        // navigate('/'); 
       } else {
         toast.error('Wrong Credentials ❌', { position: 'top-right', autoClose: 3000 });
       }

@@ -3,12 +3,12 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Icon from '@mui/icons-material/AccountCircle';
 
-function Habit() {
+function Contacts() {
   return (
-    <div style={{ padding: 20 }}>
-    Habit
+    <div >
+    Contacts
     </div>
   );
 }
 
-export default Habit;
+export default Contacts;
