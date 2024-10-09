@@ -30,7 +30,16 @@ function App() {
 
   useEffect(() => {
     // Check local storage or other mechanism for token or auth status
-    const token = localStorage.getItem('authToken');
+    const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    };
+    
+    // Example usage:
+    const token = getCookie('access_token');
+    // console.log("...",token); // Will log the value of the authToken cookie or undefined if it doesn't exist
+    
     if (token) {
       setIsAuthenticated(true); // Set auth status to true if token exists
     }

@@ -32,7 +32,6 @@ function Home() {
 
   return (
     <>
-      <h1>Home</h1>
       {userData && <h2>hi {userData.user.username}</h2>}
       {userData && <h2>{userData.user.email}</h2>}
     </>
