@@ -3,8 +3,8 @@ const API_BASE_URL="https://dashboardbackendmain.vercel.app/user"
 export const createUser = async (userData) => {
     try {
       const response = await fetch(
-        'http://localhost:3000/user/signup', 
-      // `${API_BASE_URL}/signup`,
+        // 'http://localhost:3000/user/signup', 
+      `${API_BASE_URL}/signup`,
         {
         method: 'POST',
         headers: {
@@ -30,8 +30,8 @@ export const createUser = async (userData) => {
 export const loginuser=async(userData)=>{
     try{
         const response= await fetch(
-          'http://localhost:3000/user/login'
-        //  `${API_BASE_URL}/login`
+          // 'http://localhost:3000/user/login'
+         `${API_BASE_URL}/login`
           ,{
             method:'POST',
             headers:{
@@ -59,8 +59,8 @@ export const fetchProfile = async () => {
   try {
     // Make the GET request to the profile route
     const response = await fetch(
-      // `${API_BASE_URL}/profile`
-      `http://localhost:3000/user/profile`
+      `${API_BASE_URL}/profile`
+      // `http://localhost:3000/user/profile`
       , {
       method: 'GET',
       credentials: 'include', // Important to include credentials (cookies)
