@@ -47,7 +47,7 @@ catch(error){
             placeholder="Password"
             className="p-2 border border-gray-300 rounded w-full"
             value={password}
-            onChange={(e) => setPasswords(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
           <button
