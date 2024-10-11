@@ -24,7 +24,7 @@ export const SidebarData=[
     {
         title:"Profile",
         icon:<PersonIcon/>,
-        link:'/alerts'
+        link:'/profile'
     }
     
 ]

@@ -5,6 +5,7 @@ import Contacts from './Dashboard/Contacts/Contacts';
 import Alerts from './Dashboard/Alerts/Alerts';
 import Home from './Dashboard/Home/Home';
 import Auth from './Auth/Auth';
+import Profile from './Dashboard/Profile/profile';
 import CloseIcon from '@mui/icons-material/Close';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 
@@ -50,7 +51,7 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const isDashboardRoute = ["/", "/contacts", "/alerts"].includes(location.pathname);
+  const isDashboardRoute = ["/", "/contacts", "/alerts","/profile"].includes(location.pathname);
 
   // While loading, return nothing (or you can display a loading spinner)
   if (loading) {
@@ -108,7 +109,14 @@ function App() {
                   <Alerts />
                 </ProtectedRoute>
               }
-            />
+            /><Route
+            path="/profile"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
 
             {/* Catch-all Route for undefined paths */}
             <Route path="*" element={<NotFound />} />

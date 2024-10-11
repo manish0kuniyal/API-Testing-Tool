@@ -44,7 +44,7 @@ export const loginuser=async(userData)=>{
                 throw new Error(error.error|| 'Failed to create user');
             }
             const data = await response.json();
-            console.log(data.token)
+            console.log("token",data.token)
             
         document.cookie=`access_token=${data.token}; path=/; SameSite=Lax;`;
             return data;
@@ -78,6 +78,33 @@ export const fetchProfile = async () => {
     return data;
   } catch (err) {
     console.log('Error fetching profile:', err);
+    return null;
+  }
+};
+
+
+export const UpdateUser = async (UserData) => {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/edituser`
+      , {
+      method: 'PUT',
+      credentials: 'include', // Important to include credentials (cookies)
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify(UserData)
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to update profile');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log('Error Updating profile:', err);
     return null;
   }
 };

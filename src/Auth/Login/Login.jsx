@@ -47,6 +47,7 @@ function Login() {
             className="p-2 border border-gray-300 rounded w-full"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
           <input
             type="password"
@@ -54,6 +55,7 @@ function Login() {
             className="p-2 border border-gray-300 rounded w-full"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <button
             type="submit"
