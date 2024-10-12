@@ -36,7 +36,7 @@ export const loginuser=async(userData)=>{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',
-            },
+            },credentials: 'include', 
             body:JSON.stringify(userData)
         })
             if(!response.ok){
