@@ -39,7 +39,7 @@ function App() {
     
     // Example usage:
     const token = getCookie('access_token');
-    // console.log("...",token); // Will log the value of the authToken cookie or undefined if it doesn't exist
+    console.log("...",token); // Will log the value of the authToken cookie or undefined if it doesn't exist
     
     if (token) {
       setIsAuthenticated(true); // Set auth status to true if token exists
@@ -89,32 +89,32 @@ function App() {
             <Route
               path="/"
               element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                // <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Home />
-                </ProtectedRoute>
+                // </ProtectedRoute>
               }
             />
             <Route
               path="/contacts"
               element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                // <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Contacts />
-                </ProtectedRoute>
+                // </ProtectedRoute>
               }
             />
             <Route
               path="/alerts"
               element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                // <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Alerts />
-                </ProtectedRoute>
+                // </ProtectedRoute>
               }
             /><Route
             path="/profile"
             element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
+              // <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <Profile />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
 
