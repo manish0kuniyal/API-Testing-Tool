@@ -21,10 +21,10 @@ function Login() {
       if (result && result.token) {
         // localStorage.setItem('authToken', result.token);
         // document.cookie = `authToken=${result.token}; path=/; max-age=${20 * 24 * 60 * 60}; secure; samesite=Lax`;
-        toast.success('Login successful! 🎉', { position: 'top-right', autoClose: 2000 });
-        console.log("naviagateting to home .")
-        window.location.href='/'
-        // navigate('/'); 
+        // toast.success('Login successful! 🎉', { position: 'top-right', autoClose: 2000 });
+        console.log("navigating to home .")
+        // window.location.href='/'
+        navigate('/'); 
       } else {
         toast.error('Wrong Credentials ❌', { position: 'top-right', autoClose: 3000 });
       }

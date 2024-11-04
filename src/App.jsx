@@ -9,7 +9,6 @@ import Profile from './Dashboard/Profile/profile';
 import CloseIcon from '@mui/icons-material/Close';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 
-// NotFound component for undefined routes
 const NotFound = () => {
   return <div className="text-center text-2xl">Page Not Found</div>;
 };
@@ -39,10 +38,10 @@ function App() {
     
     // Example usage:
     const token = getCookie('access_token');
-    console.log("...",token); // Will log the value of the authToken cookie or undefined if it doesn't exist
+    console.log("...",token," authenticated ",isAuthenticated); // Will log the value of the authToken cookie or undefined if it doesn't exist
     
     if (token) {
-      setIsAuthenticated(true); // Set auth status to true if token exists
+      setIsAuthenticated(true); console.log("...",token," authenticated ",isAuthenticated);  // Set auth status to true if token exists
     }
     setLoading(false); // Set loading to false after checking
   }, []);
@@ -89,32 +88,32 @@ function App() {
             <Route
               path="/"
               element={
-                // <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Home />
-                // </ProtectedRoute>
+                </ProtectedRoute>
               }
             />
             <Route
               path="/contacts"
               element={
-                // <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Contacts />
-                // </ProtectedRoute>
+                </ProtectedRoute>
               }
             />
             <Route
               path="/alerts"
               element={
-                // <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Alerts />
-                // </ProtectedRoute>
+                </ProtectedRoute>
               }
             /><Route
             path="/profile"
             element={
-              // <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <Profile />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }
           />
 
