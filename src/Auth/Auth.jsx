@@ -6,7 +6,6 @@ import Login from './Login/Login';
 const Auth = () => {
   const [selected, setSelected] = useState('login'); // Initial selection is 'login'
 
-
   const formVariants = {
     hidden: { opacity: 0, y: 20 }, 
     visible: { opacity: 1, y: 0 }, 

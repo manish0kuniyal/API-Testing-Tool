@@ -1,5 +1,5 @@
-const API_BASE_URL="https://dashboardbackendmain.vercel.app/user"
-// const API_BASE_URL="http://localhost:3000/user"
+// const API_BASE_URL="https://dashboardbackendmain.vercel.app/user"
+const API_BASE_URL="http://localhost:3000/user"
 export const createUser = async (userData) => {
     try {
       const response = await fetch(
@@ -9,7 +9,7 @@ export const createUser = async (userData) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        },
+        },credentials: 'include', 
         body: JSON.stringify(userData),
       });
   
@@ -46,7 +46,9 @@ export const loginuser=async(userData)=>{
             const data = await response.json();
             console.log("token",data.token)
             
-        document.cookie=`access_token=${data.token}; path=/; SameSite=Lax;`;
+            document.cookie = `access_token=${data.token}; path=/; max-age=${60 * 60 * 24 * 25};`; // 7 days in seconds
+
+
             return data;
     }
     catch(err){

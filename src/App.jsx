@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Sidebar from './Components/Sidebar/Sidebar';
-import Contacts from './Dashboard/Contacts/Contacts';
+import ApiUrl from './Dashboard/ApiUrl/ApiUrl';
 import Alerts from './Dashboard/Alerts/Alerts';
 import Home from './Dashboard/Home/Home';
 import Auth from './Auth/Auth';
 import Profile from './Dashboard/Profile/profile';
 import CloseIcon from '@mui/icons-material/Close';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
+import Cookies from "js-cookie";
 
 const NotFound = () => {
   return <div className="text-center text-2xl">Page Not Found</div>;
 };
 
-// ProtectedRoute component to guard dashboard routes
 const ProtectedRoute = ({ isAuthenticated, children }) => {
   if (!isAuthenticated) {
     return <Navigate to="/auth" replace />;
@@ -24,42 +24,39 @@ const ProtectedRoute = ({ isAuthenticated, children }) => {
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true); // Add loading state
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    // Check local storage or other mechanism for token or auth status
     const getCookie = (name) => {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
+      if (parts.length === 2) return parts.pop().split(';').shift();  
     };
-    
-    // Example usage:
+
     const token = getCookie('access_token');
-    console.log("...",token," authenticated ",isAuthenticated); // Will log the value of the authToken cookie or undefined if it doesn't exist
-    
+    console.log("Token found in cookies:", token);  
+
     if (token) {
-      setIsAuthenticated(true); console.log("...",token," authenticated ",isAuthenticated);  // Set auth status to true if token exists
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
     }
-    setLoading(false); // Set loading to false after checking
+
+    setLoading(false); 
   }, []);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const isDashboardRoute = ["/", "/contacts", "/alerts","/profile"].includes(location.pathname);
+  const isDashboardRoute = ["/", "/apiurl", "/alerts", "/profile"].includes(location.pathname);
 
-  // While loading, return nothing (or you can display a loading spinner)
   if (loading) {
-    return <div>Loading...</div>; // Optional: You can replace this with a proper loading spinner
+    return <div>Loading...</div>;
   }
 
   return (
     <div className="h-screen flex flex-col">
-      {/* Conditionally render header and sidebar based on the route */}
       {isDashboardRoute && (
         <header className="fixed top-0 left-0 w-full bg-bkShade text-wtShade z-20 md:hidden flex justify-between items-center px-4">
           <button
@@ -79,12 +76,9 @@ function App() {
       <div className={`flex flex-1 ${isDashboardRoute ? '' : ''}`}>
         {isDashboardRoute && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
 
-        <main className={`flex-1  pt-4 mt-10 sm:mt-10 md:mt-0 lg:mt-0  bg-wtSmoke ${isDashboardRoute ? '' : ''}`}>
+        <main className={`flex-1 pt-4 mt-10 sm:mt-10 md:mt-0 lg:mt-0 bg-wtSmoke ${isDashboardRoute ? '' : ''}`}>
           <Routes>
-            {/* Auth Route */}
             <Route path="/auth" element={<Auth />} />
-
-            {/* Protected Dashboard Routes */}
             <Route
               path="/"
               element={
@@ -94,10 +88,10 @@ function App() {
               }
             />
             <Route
-              path="/contacts"
+              path="/ApiUrl"
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <Contacts />
+                  <ApiUrl />
                 </ProtectedRoute>
               }
             />
@@ -108,16 +102,15 @@ function App() {
                   <Alerts />
                 </ProtectedRoute>
               }
-            /><Route
-            path="/profile"
-            element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-
-            {/* Catch-all Route for undefined paths */}
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

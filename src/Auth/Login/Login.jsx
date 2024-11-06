@@ -16,15 +16,12 @@ function Login() {
 
     try {
       const result = await loginuser({ username, password });
-      console.log(result); // Debugging line
+      console.log(result,"result"); // Debugging line
 
-      if (result && result.token) {
-        // localStorage.setItem('authToken', result.token);
-        // document.cookie = `authToken=${result.token}; path=/; max-age=${20 * 24 * 60 * 60}; secure; samesite=Lax`;
-        // toast.success('Login successful! 🎉', { position: 'top-right', autoClose: 2000 });
-        console.log("navigating to home .")
-        // window.location.href='/'
-        navigate('/'); 
+      if (result) {
+         console.log("navigating to home .")
+         setTimeout(()=>{
+        navigate('/'); },1000)
       } else {
         toast.error('Wrong Credentials ❌', { position: 'top-right', autoClose: 3000 });
       }

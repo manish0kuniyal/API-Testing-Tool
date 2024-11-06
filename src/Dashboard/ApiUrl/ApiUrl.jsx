@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import DoneIcon from '@mui/icons-material/Done';
 import { ApiInfo } from '../../api/ApiResponse';
+import {ToastContainer, toast } from 'react-toastify';  // Importing toast
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for styling
 
-function Contacts() {
+function ApiUrl() {
   const [url, setUrl] = useState('');
   const [submittedUrl, setSubmittedUrl] = useState(''); // New state to track the submitted URL
   const [isLoading, setIsLoading] = useState(false);
@@ -12,6 +14,7 @@ function Contacts() {
   const [responseHeaders, setResponseHeaders] = useState(null);
   const [responseTime, setResponseTime] = useState(null);
   const [responseStatus, setResponseStatus] = useState(null);
+  const [save, setSave] = useState(false);
 
   // Use effect to fetch data only when the submitted URL changes
   useEffect(() => {
@@ -21,17 +24,19 @@ function Contacts() {
         setError(null);
 
         try {
-          const data = await ApiInfo({ url: submittedUrl });
-          console.log(data,"pppp")
+          const data = await ApiInfo({ url: submittedUrl, save });
           if (data) {
             setResponse(data.responseBody);
             setResponseHeaders(data.responseHeaders);
             setResponseStatus(data.statusCode);
             setResponseTime(data.responseTime);
-            console.log(responseStatus,responseTime,"00000000")
+            // Show success toast when data is successfully fetched
+            toast.success('Data fetched successfully!');
           }
         } catch (err) {
           setError(err.message || 'An error occurred');
+          // Show error toast in case of failure
+          toast.error('Failed to fetch data!');
         } finally {
           setIsLoading(false);
         }
@@ -39,17 +44,23 @@ function Contacts() {
     };
 
     fetchData();
-  }, [submittedUrl]); // Fetch data whenever the submitted URL changes
+  }, [submittedUrl, save]); // Fetch data whenever the submitted URL or save state changes
 
   const handleUrl = (e) => {
     e.preventDefault();
     setSubmittedUrl(url); // Update the submitted URL, which triggers useEffect
   };
 
+  const handleBookmarkClick = () => {
+    setSave(true); // Set save to true when bookmark is clicked
+    // You could show a toast message here as well
+    toast.info('Saving the API data...');
+  };
+
   const responseArrayLength = Array.isArray(response) ? response.length : 0;
 
   return (
-    <div className="p-6 pt-4 border-2 w-full">
+    <div className="p-6 pt-4 border-2 w-full"><ToastContainer />
       <form className="flex items-center justify-between" onSubmit={handleUrl}>
         <input
           placeholder="Enter URL"
@@ -66,8 +77,8 @@ function Contacts() {
         </button>
         <button
           type="button"
-          className="p-2 rounded text-white bg-gray-400 hover:bg-black w-[10%]"
-          onClick={() => console.log("Save clicked")}
+          className="p-2 rounded text-white bg-purple-600 hover:bg-green-600 w-[10%]"
+          onClick={handleBookmarkClick}  // Triggering bookmark click
         >
           <BookmarkIcon />
         </button>
@@ -82,7 +93,7 @@ function Contacts() {
             <div className="p-4 bg-gray-100 rounded-md">
               <p><strong className='text-green-700'>Status:</strong> {responseStatus || 'Unknown'}</p>
               <p><strong className='text-blue-700'>Message:</strong> {response.message || 'No message'}</p>
-              <p><strong className='text-red-700'>Response Time:</strong> {responseTime}\</p>
+              <p><strong className='text-red-700'>Response Time:</strong> {responseTime}</p>
               <p><strong className='text-red-700'>Data Length:</strong> {responseArrayLength}</p>
             </div>
 
@@ -108,4 +119,4 @@ function Contacts() {
   );
 }
 
-export default Contacts;
+export default ApiUrl;

@@ -1,7 +1,7 @@
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import SelfImprovementRoundedIcon from '@mui/icons-material/SelfImprovementRounded';
 import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import HttpIcon from '@mui/icons-material/Http';
 import PersonIcon from '@mui/icons-material/Person';
 export const SidebarData=[
 
@@ -11,9 +11,9 @@ export const SidebarData=[
         link:'/'
     },
     {
-        title:"Contacts",
-        icon:<PeopleAltIcon/>,
-        link:'/contacts'
+        title:"Link",
+        icon:<HttpIcon/>,
+        link:'/apiurl'
     },
     
     {
