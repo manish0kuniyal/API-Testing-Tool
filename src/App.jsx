@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Sidebar from './Components/Sidebar/Sidebar';
 import ApiUrl from './Dashboard/ApiUrl/ApiUrl';
-import Alerts from './Dashboard/Alerts/Alerts';
+import History from './Dashboard/ApiHistory/History';
 import Home from './Dashboard/Home/Home';
 import Auth from './Auth/Auth';
 import Profile from './Dashboard/Profile/profile';
@@ -49,7 +49,7 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const isDashboardRoute = ["/", "/apiurl", "/alerts", "/profile"].includes(location.pathname);
+  const isDashboardRoute = ["/", "/apiurl", "/history", "/profile"].includes(location.pathname);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -96,10 +96,10 @@ function App() {
               }
             />
             <Route
-              path="/alerts"
+              path="/History"
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <Alerts />
+                  <History />
                 </ProtectedRoute>
               }
             />

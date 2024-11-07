@@ -3,6 +3,7 @@ import SelfImprovementRoundedIcon from '@mui/icons-material/SelfImprovementRound
 import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
 import HttpIcon from '@mui/icons-material/Http';
 import PersonIcon from '@mui/icons-material/Person';
+import StorageIcon from '@mui/icons-material/Storage';
 export const SidebarData=[
 
     {
@@ -17,9 +18,9 @@ export const SidebarData=[
     },
     
     {
-        title:"Alerts",
-        icon:<CampaignRoundedIcon/>,
-        link:'/alerts'
+        title:"History",
+        icon:<StorageIcon/>,
+        link:'/history'
     },
     {
         title:"Profile",
