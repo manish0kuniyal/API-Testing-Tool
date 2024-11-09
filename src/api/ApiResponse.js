@@ -60,6 +60,7 @@ export const ApiInfo = async (userData) => {
       }
   
       const data = await response.json();
+      console.log(data)
       return data;
     } catch (err) {
       console.log("Error during user creation:", err);
