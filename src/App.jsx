@@ -8,6 +8,7 @@ import Auth from './Auth/Auth';
 import Profile from './Dashboard/Profile/profile';
 import CloseIcon from '@mui/icons-material/Close';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
+import LoadTest from './Dashboard/Load/Load';
 import Cookies from "js-cookie";
 
 const NotFound = () => {
@@ -49,7 +50,7 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const isDashboardRoute = ["/", "/apiurl", "/history", "/profile"].includes(location.pathname);
+  const isDashboardRoute = ["/", "/apiurl", "/history", "/profile", "/loadapi"].includes(location.pathname);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -102,7 +103,14 @@ function App() {
                   <History />
                 </ProtectedRoute>
               }
-            />
+            /><Route
+            path="/loadapi"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <LoadTest />
+              </ProtectedRoute>
+            }
+          />
             <Route
               path="/profile"
               element={

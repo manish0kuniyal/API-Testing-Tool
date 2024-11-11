@@ -1,5 +1,5 @@
-const API_BASE_URL="https://dashboardbackendmain.vercel.app/user"
-// const API_BASE_URL="http://localhost:3000/user"
+// const API_BASE_URL="https://dashboardbackendmain.vercel.app/user"
+const API_BASE_URL="http://localhost:3000/user"
 
 
 const getCookie = (name) => {
@@ -24,15 +24,15 @@ export const ApiInfo = async (userData) => {
       });
   
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to fetch API');
+        const errorData = await response.json();
+        throw errorData;
       }
   
       const data = await response.json();
       return data;
     } catch (err) {
       console.log("Error during user creation:", err);
-      return null; 
+      return { error: err.message || 'Failed to fetch API', details: err }; 
     }
   };
   

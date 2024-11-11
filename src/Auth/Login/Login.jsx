@@ -20,8 +20,8 @@ function Login() {
 
       if (result) {
          console.log("navigating to home .")
-         setTimeout(()=>{
-        navigate('/'); },1000)
+        window.location.href='/'
+        // navigate('/');
       } else {
         toast.error('Wrong Credentials ❌', { position: 'top-right', autoClose: 3000 });
       }

@@ -26,7 +26,7 @@ export const SidebarData=[
     {
         title:"LoadTest",
         icon:<LocalShippingIcon/>,
-        link:'/history'
+        link:'/loadapi'
     },
     {
         title:"Profile",
