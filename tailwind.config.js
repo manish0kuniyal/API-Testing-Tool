@@ -9,7 +9,7 @@ module.exports = {
       bkShade: '#191919',
       wtShade: '#fcfcfc',
       prShade: '#D4C4EC',
-      wtSmoke:'#f5f5f5'
+      wtSmoke:'#e8e8e8'
     },},
   },
   plugins: [],
